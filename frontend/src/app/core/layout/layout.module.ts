@@ -5,14 +5,13 @@ import { RouterModule } from "@angular/router";
 import { LayoutComponent } from "./layout.component";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
 import { SharedModule } from "../../shared/shared.module";
 import { LoginService } from "../../feature/user/login/login.service";
 
 @NgModule({
-  declarations: [LayoutComponent, HeaderComponent, FooterComponent, SidebarComponent],
+  declarations: [LayoutComponent, HeaderComponent, FooterComponent],
   imports: [RouterModule, CommonModule, SharedModule],
-  exports: [LayoutComponent, HeaderComponent, FooterComponent, SidebarComponent],
+  exports: [LayoutComponent, HeaderComponent, FooterComponent],
   providers: [LoginService]
 })
 export class LayoutModule {

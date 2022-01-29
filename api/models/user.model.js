@@ -20,7 +20,7 @@ var userSchema = mongoose.Schema({
   },
   token: String,
   email: String,
-  mobile: String,
+  canQuery: String,
   create_date: {
     type: Date,
     default: Date.now

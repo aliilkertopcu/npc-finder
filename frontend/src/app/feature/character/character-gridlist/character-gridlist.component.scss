@@ -1,0 +1,47 @@
+@use "@angular/material" as mat;
+
+.mat-card {
+    border-radius: 10px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin: 1rem;
+    background-image: url(https://avatarfiles.alphacoders.com/124/thumb-1920-124470.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: antiquewhite;
+    text-shadow: 0.07em 0 black, 0 0.07em black, -0.07em 0 black, 0 -0.07em black;
+    opacity: 0.8;
+
+    transition: all 0.25s ease-in-out;
+
+    @include mat.elevation-transition();
+    @include mat.elevation(3);
+
+    &:hover {
+        transition: all 0.25s ease-in-out;
+        // transition: opacity 0.25s ease-in-out;
+        opacity: 1;
+        @include mat.elevation(5);
+    }
+}
+
+.mat-form-field {
+    width: -webkit-fill-available;
+}
+
+.mat-card-subtitle {
+    color: antiquewhite;
+    text-shadow: 0.07em 0 black, 0 0.07em black, -0.07em 0 black, 0 -0.07em black;
+}
+
+.mat-card-content {
+    font-size: small;
+    font-style: italic;
+}
+
+.filter-form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: -webkit-fill-available;
+    display: block;
+}

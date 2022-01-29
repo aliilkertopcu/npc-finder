@@ -21,18 +21,18 @@ export class ProfileComponent implements OnInit {
     private validationService: ValidationService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
-  createProfileForm() {
+  createProfileForm(): void {
     this.profileForm = this.formBuilder.group({
       _id: [""],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
       email: ["", Validators.required],
-      mobile: ["", [Validators.required, Validators.minLength(10)]]
+      canQuery: ["", Validators.required]
     });
   }
-  createPasswordForm() {
+  createPasswordForm(): void {
     this.passwordForm = this.formBuilder.group(
       {
         username: ["", Validators.required],
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
         user.token = this.user.token;
         localStorage.setItem("currentUser", JSON.stringify(user));
       },
-      (error) => {}
+      (error) => { }
     );
   }
 
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
         this.toastrService.success("Profile updated successful");
         this.router.navigate(["/login"]);
       },
-      (error) => {}
+      (error) => { }
     );
   }
 

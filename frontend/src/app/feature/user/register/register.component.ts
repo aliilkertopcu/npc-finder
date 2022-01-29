@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private validationService: ValidationService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   register(): void {
     this.loading = true;
@@ -37,19 +37,19 @@ export class RegisterComponent implements OnInit {
   }
 
   createForm(): FormGroup {
-   return this.formBuilder.group({
-        firstName: [ null,{ validators: [ Validators.required]}],
-        lastName: [null,{ validators: [ Validators.required]}],
-        username: [null, { validators: [Validators.required, this.validationService.emailValidator ]}],
-        password: [null,{ validators: [Validators.required, Validators.minLength(6)]}],
-        confirmPassword: [null,{ validators: [ Validators.required]}]
-      },
+    return this.formBuilder.group({
+      firstName: [null, { validators: [Validators.required] }],
+      lastName: [null, { validators: [Validators.required] }],
+      username: [null, { validators: [Validators.required, this.validationService.emailValidator] }],
+      password: [null, { validators: [Validators.required, Validators.minLength(6)] }],
+      confirmPassword: [null, { validators: [Validators.required] }]
+    },
       {
         validator: this.validationService.MustMatch("password", "confirmPassword")
       }
     );
   }
   ngOnInit(): void {
-    this.registerForm =  this.createForm();
+    this.registerForm = this.createForm();
   }
 }

@@ -8,11 +8,14 @@ import { CoreModule } from "@core/core.module";
 import { SharedModule } from "@shared/shared.module";
 import { ProfileComponent } from "./profile/profile.component";
 import { HttpClientModule } from "@angular/common/http";
+import { CharacterModule } from "../character/character.module";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, HomeComponent, ProfileComponent],
-  imports: [UserRoutingModule, HttpClientModule, CoreModule.forRoot(), SharedModule.forRoot()],
+  imports: [UserRoutingModule, HttpClientModule, CoreModule.forRoot(), SharedModule.forRoot(), CharacterModule],
   providers: [LoginService],
   bootstrap: []
 })
-export class UserModule {}
+export class UserModule { }

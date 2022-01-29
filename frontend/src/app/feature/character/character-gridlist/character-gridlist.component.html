@@ -1,0 +1,99 @@
+<div class="panel panel-default">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+      <h1>Lord of the Rings</h1>
+    </div>
+  </div>
+
+  <!-- FilterBar -->
+  <mat-grid-list cols="{{filterCols}}" rowHeight="16rem">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <form class="filter-form">
+        <h4>Name</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Please search for a name</mat-label>
+
+          <input matInput type="text" [(ngModel)]="filters.name" (submit)="getCharacters()" name="name">
+          <button type="button" matSuffix mat-icon-button aria-label="Search" (click)="getCharacters()">
+            <mat-icon>search</mat-icon>
+          </button>
+
+          <!-- <mat-select [(ngModel)]="filters.name" name="name" (selectionChange)="getCharacters()">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let option of names" [value]="option.id">{{option.text}}</mat-option>
+          </mat-select> -->
+        </mat-form-field>
+
+        <h4>Gender</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Please select character gender</mat-label>
+          <mat-select [(ngModel)]="filters.gender" name="gender" (selectionChange)="getCharacters()">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let option of filterOptions.genders" [value]="option.text">{{option.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <form class="filter-form">
+        <h4>Hair Color</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Please choose hair color</mat-label>
+          <mat-select [(ngModel)]="filters.hair" name="hair" (selectionChange)="getCharacters()">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let option of filterOptions.hairs" [value]="option.text">{{option.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <h4>Race</h4>
+        <mat-form-field appearance="outline">
+          <mat-label>Please select character race</mat-label>
+          <mat-select [(ngModel)]="filters.race" name="race" (selectionChange)="getCharacters()">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let option of filterOptions.races" [value]="option.text">{{option.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <h1>Results:</h1>
+
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <div>
+      <mat-spinner></mat-spinner>
+      <br />
+      <h4>Retreiving...</h4>
+    </div>
+  </div>
+
+  <mat-paginator *ngIf="!loading" [length]="pageLength" [pageSize]="filters.limit" [pageSizeOptions]="pageSizeOptions"
+    (page)="getCharacterPage($event)" aria-label="Select page">
+  </mat-paginator>
+
+  <mat-grid-list *ngIf="!loading" cols="{{gridCols}}" rowHeight="18rem">
+    <mat-grid-tile *ngFor="let character of filteredCharacters" [colspan]="1" [rowspan]="1">
+      <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title>{{character.name}}</mat-card-title>
+          <mat-card-subtitle>{{character.race}}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          Gender: {{character.gender}}
+          <br />
+          Hair: {{character.hair}}
+          <br />
+          Birth: {{character.birth}}
+          <br />
+          Death: {{character.death}}
+          <br />
+          Spouse: {{character.spouse}}
+          <br />
+          Realm: {{character.realm}}
+
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

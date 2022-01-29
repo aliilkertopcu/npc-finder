@@ -5,12 +5,8 @@ import { AuthGuard } from "@core/guards";
 const routes: Routes = [
   {
     path: "",
-    loadChildren: () => import("./feature/user/user.module").then((module) => module.UserModule)
-  },
-  {
-    path: "contacts",
     canActivate: [AuthGuard],
-    loadChildren: () => import("./feature/contact/contact.module").then((module) => module.ContactModule)
+    loadChildren: () => import("./feature/user/user.module").then((module) => module.UserModule)
   }
 ];
 
@@ -23,4 +19,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

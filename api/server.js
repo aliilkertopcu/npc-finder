@@ -67,7 +67,8 @@ app.get("*", (req, res) => {
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(
   expressJwt({
-    secret: environment.secret,
+    secret: "hebelöp",
+    // secret: environment.secret,
     algorithms: ["HS256"],
     getToken: function (req) {
       if (
@@ -90,10 +91,6 @@ app.use(
     ]
   })
 );
-
-
-
-
 
 const HOST = "0.0.0.0";
 // start server

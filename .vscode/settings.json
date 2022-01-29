@@ -2,9 +2,8 @@
     "tslint.alwaysShowRuleFailuresAsWarnings": true,
     "editor.formatOnSave": true,
     "editor.foldingStrategy": "auto",
-    "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "files.autoSave": "off",
     "typescript.preferences.quoteStyle": "double",
     "javascript.preferences.quoteStyle": "double",
@@ -14,6 +13,7 @@
     "git.autofetch": true,
     "files.exclude": {
         "**/.git": true,
+        "**/.scss": true,
         "**/.svn": true,
         "**/.hg": true,
         "**/CVS": true,
